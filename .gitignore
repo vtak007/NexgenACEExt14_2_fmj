@@ -1,0 +1,9 @@
+# Compile-dependency packages — large third-party .u inputs dropped in to satisfy
+# the compiler (stock UT99 + Nexgen + IACE). These are NOT part of this plugin and
+# should not be version-controlled here.
+*.u
+# ...except this plugin's own compiled output, which we do keep.
+!NexgenACEExt14_2_fmj.u
+
+# Build scratch
+*.log
