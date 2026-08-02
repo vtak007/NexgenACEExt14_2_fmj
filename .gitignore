@@ -7,3 +7,13 @@
 
 # Build scratch
 *.log
+
+# Investigation data / send-out bundle (not part of the plugin)
+Nexgen_hasright_kicks.txt
+ACE-bug-report-bundle.zip
+
+# Copied-in ACE/Nexgen reference files (server artifacts, not plugin source)
+ACEFileList.txt
+ACETweakList.txt
+ACEv14e_S.dll
+Nexgen.ini

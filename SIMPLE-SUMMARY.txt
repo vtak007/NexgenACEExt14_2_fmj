@@ -1,0 +1,80 @@
+========================================================
+ THE "flux keeps getting kicked" PROBLEM - SIMPLE VERSION
+========================================================
+
+THE PROBLEM (explained simply)
+------------------------------
+Our game server has a "referee" program called ACE. Its job is to
+watch every player and kick anyone who looks like they're cheating.
+
+ACE is being a bit TOO jumpy. There's a totally normal, harmless
+part of the game (called "hasRight" - it just checks "is this player
+allowed to do X?") and ACE keeps mistaking it for cheating. So it
+kicks an innocent player (flux). This is called a "false alarm" or
+"false positive" - like a smoke detector going off when you make
+toast. Nothing is burning; the alarm is just too sensitive.
+
+WHEN does it happen?
+- It kicks flux the moment the SCOREBOARD pops up at the END of a game,
+  BUT only when an ADMIN ends the game early ("force-end").
+- If a player wins the game the normal way (by getting enough frags),
+  NOBODY gets kicked. That version is safe.
+
+So the trouble only happens at one specific moment: an admin ending
+the game early.
+
+
+WHAT WE ALREADY TRIED (and why it didn't work)
+----------------------------------------------
+1. We built and installed a helper add-on called NexgenACEExt (updated
+   it to work with the new ACE version). It installed fine... but flux
+   STILL got kicked. So that add-on is NOT the cure. (We were pretty
+   sure it wouldn't be - it was worth a try.)
+
+2. We checked if ACE has a setting to say "hey, hasRight is fine, stop
+   freaking out." It does NOT. That alarm is built into ACE and can't
+   be turned off by us.
+
+3. We checked the scoreboard and the idle/AFK-kick timer. Neither one
+   is the cause. (Ruled out.)
+
+
+WHAT'S ACTUALLY GOING ON
+------------------------
+The game's admin tool "Nexgen" is in charge of starting and ending
+matches. When an admin ends a match early, Nexgen runs its own little
+"end the game" routine on each player's computer - and THAT is what
+trips ACE's over-sensitive alarm. Ending the game the normal way skips
+that routine, which is why the normal way is safe.
+
+
+THE POSSIBLE SOLUTIONS
+----------------------
+1. THE TEST WE'RE RUNNING NOW (easy, undo-able)
+   Tell Nexgen to stop controlling how matches start/end
+   (setting: enableNexgenStartControl=False), then end matches the
+   normal way. If the kicks stop, we've found it. This is our current
+   experiment - waiting on test results.
+
+2. FIX NEXGEN ITSELF (more work, real fix)
+   Get the source code for our version of Nexgen and change the exact
+   line that sets off the alarm. This is the "proper repair," but it
+   needs the code and careful testing.
+
+3. TELL THE ACE AUTHOR (best long-term fix)
+   Report this false alarm to the person who makes ACE so they can add
+   "hasRight" to their trusted list. Then it's fixed for everyone.
+
+4. JUST AVOID IT (simplest workaround)
+   Don't end games early as an admin. Let them finish the normal way
+   (by frag limit). No code, no risk - flux never gets kicked this way.
+
+
+SHORT VERSION
+-------------
+ACE (the anti-cheat) is a smoke detector that's too sensitive. It
+false-alarms on a harmless part of the game, but ONLY when an admin
+ends a match early. Fastest fix: end games normally instead of early.
+Real fix: patch Nexgen or ask the ACE author to whitelist it.
+
+Last updated: 2026-08-01
