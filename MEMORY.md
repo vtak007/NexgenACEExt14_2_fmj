@@ -125,3 +125,9 @@ path is the hypothesis under test, not a certainty — don't leave it off perman
 `ACETweakList.txt`, `ACEFileList.txt`, `ACEv14e_S.dll` + ACE `.u` packages, `server.log`, the four
 `[ACE]...flux.log` kick logs, and `Nexgen_hasright_kicks.txt` (169-kick historical dataset: filename
 listing + the `hasRight` UFunction line for each; fields per name = date, map, capture-index N, player).
+
+## CHANGE LOG
+
+Newest first. Format: `- YYYY-MM-DD — what changed`.
+
+- 2026-08-02 — Added this Change Log section (UT99 convention).
