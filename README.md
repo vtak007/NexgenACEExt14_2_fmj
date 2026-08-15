@@ -14,7 +14,8 @@ Built with `ucc make` in the `C:\UnrealTournament` workspace against `IACEv14.u`
 server (`ServerPackages` + `ServerActors` added, the actor line after `Nexgen112N.NexgenActor`) and the
 server restarted cleanly.
 
-**This is a monitored experiment, not a confirmed fix** — see `repro-context.md`. The real test is
+**This is a monitored experiment, not a confirmed fix** — see
+[`NexgenACEExt14_2_fmj/repro-context.md`](NexgenACEExt14_2_fmj/repro-context.md). The real test is
 whether the `Illegal ProcessEvent Call Detected` / `NexgenClient.hasRight` kicks stop recurring now
 that the plugin is live. Logs are being monitored.
 
